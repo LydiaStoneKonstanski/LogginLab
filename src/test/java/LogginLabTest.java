@@ -1,3 +1,6 @@
+import org.junit.Assert;
+import org.junit.Test;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -31,4 +34,38 @@ public class LogginLabTest {
             }
         }
     }
+    // Given
+    @Test
+    public void given1and10_whenThresholdReached_thenFalse(){
+        // Given
+        var limit = 1;
+        var threshold = 10;
+        // Expected
+        var expected = false;
+        // When
+        LogginLab lab = new LogginLab();
+        lab.setThreshold(threshold);
+        var actual = lab.thresholdReached(limit);
+        //Assert
+        Assert.assertEquals(expected, actual);
+        logger.log(Level.INFO, "This is a test!");
+    }
+
+    @Test
+    public void given5and1_whenThresholdReached_thenTrue(){
+        // Given
+        var limit = 5;
+        var threshold = 1;
+        // Expected
+        var expected = true;
+        // When
+        LogginLab lab = new LogginLab();
+        lab.setThreshold(threshold);
+        var actual = lab.thresholdReached(limit);
+        //Assert
+        Assert.assertEquals(expected, actual);
+        logger.log(Level.INFO, "This is also a test!");
+    }
+
 }
+
